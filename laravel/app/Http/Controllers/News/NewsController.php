@@ -17,6 +17,7 @@ class NewsController extends BaseController
     public function index()
     {
         $items = News::all();
+        
         return view('news.index',compact('items'));
     }
 
@@ -50,6 +51,9 @@ class NewsController extends BaseController
     public function show($id)
     {
         //
+        $item= News::findorFail($id);
+        
+        return view('news.news.show', compact('item'));
     }
 
     /**
@@ -61,8 +65,8 @@ class NewsController extends BaseController
     public function edit($id)
     {
         $items = News::findorFail($id);
-        $caregoryList = News::all();
-        return view('news.admin.category.edit', compact('item','categoryList'));
+        
+        return view('news.admin.edit', compact('item'));
     }
 
     /**
