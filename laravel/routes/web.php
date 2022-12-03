@@ -32,3 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['namespace'=>'\App\Http\Controllers','prefix'>'projects'],function(){
+    Route::resource('project','ProjectController')->names('project');
+});
